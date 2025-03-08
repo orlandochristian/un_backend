@@ -1,10 +1,16 @@
 const express = require("express");
-const app = express();
+const cors = require("cors");
+const dashboard = require("./controllers/dashboardController.js");
 
+const app = express();
+app.use(cors())
+app.use(express.json());
 
 app.get("/", (req,res) => {
-    res.send("welcome")
+    res.send("Page not Found")
 })
+
+app.use("/dashboard",dashboard)
 
 
 
