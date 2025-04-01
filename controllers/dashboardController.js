@@ -12,7 +12,7 @@ const {
 
 
 dashboard.get("/",  async (req,res)=>{
-
+   
     try {
        
         const { allAreas } = await getAllareas();
@@ -25,9 +25,9 @@ dashboard.get("/",  async (req,res)=>{
 })
 
 dashboard.get("/available",  async (req,res)=>{
-
+   
     try {
-       
+        
         const { allAreasavailables } = await getAllareasavailables();
       
         res.status(200).json(allAreasavailables);
