@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const dashboard = require("./controllers/dashboardController.js");
 const embeddings = require("./controllers/embeddingsController.js");
-const asktollm = require("./controllers/asktollmController.js");
+const bmci = require("./controllers/bmciController.js");
 
 
 const app = express();
@@ -16,10 +16,7 @@ app.get("/", (req,res) => {
 
 app.use("/embeddings",embeddings) 
 app.use("/dashboard",dashboard)
-
-
-
-//app.use("/asktollm",asktollm)
+app.use("/bmci",bmci)
 
 app.get("*",(req,res) => {
     res.status(404).json({"error": "page Not Found"})

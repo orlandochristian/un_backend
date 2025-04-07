@@ -6,6 +6,7 @@ const dashboard = express.Router();
 const {
     getAllareas,
     getAllareasavailables,
+    getDiplomatsByAreaId,
 
 } = require("../queries/areas.js");
 
@@ -37,6 +38,21 @@ dashboard.get("/available",  async (req,res)=>{
     }
 })
 
+dashboard.get("/diplomats/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { error, diplomatsByArea } = await getDiplomatsByAreaId(id);
+        if (error && error.received === 0) {
+            res.status(404).json({ error: "Diplomats Not Found, Check Diplo ID And Try Again" });
+        } else if (error) {
+            throw new Error("Server Error");
+        } else {
+            res.status(200).json(diplomatsByArea);
+        }
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+  })
 
 
 

@@ -28,8 +28,25 @@ const getAllareasavailables = async () => {
     }
 };
 
+const getDiplomatsByAreaId = async (id) => {
+   
+    try {
+       
+        const diplomatsByArea = await db.any(
+            `SELECT * from diplomats where area_id=$1 and visible is TRUE`, [id]
+        );
+       
+        return { diplomatsByArea  };
+    } catch (error) {
+        return { error: error };
+    }
+};
+
+
+
 module.exports = {
     getAllareas,
     getAllareasavailables,
+    getDiplomatsByAreaId,
 
 }
