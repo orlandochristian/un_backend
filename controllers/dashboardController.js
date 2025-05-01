@@ -7,6 +7,7 @@ const {
     getAllareas,
     getAllareasavailables,
     getDiplomatsByAreaId,
+    getOfficessByDiploId,
 
 } = require("../queries/areas.js");
 
@@ -48,6 +49,22 @@ dashboard.get("/diplomats/:id", async (req, res) => {
             throw new Error("Server Error");
         } else {
             res.status(200).json(diplomatsByArea);
+        }
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+  })
+
+  dashboard.get("/offices/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { error, officesByDiplo } = await getOfficessByDiploId(id);
+        if (error && error.received === 0) {
+            res.status(404).json({ error: "Offices Not Found, Check Diplo ID And Try Again" });
+        } else if (error) {
+            throw new Error("Server Error");
+        } else {
+            res.status(200).json(officesByDiplo);
         }
     } catch (error) {
         res.status(500).json({ error: error.message });
