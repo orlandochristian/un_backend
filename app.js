@@ -10,7 +10,7 @@ app.use(cors())
 app.use(express.json());
 
 app.get("/", (req,res) => {
-    res.send("Page not Found")
+    res.send("Welcome to UN Back-End")
 })
 
 
