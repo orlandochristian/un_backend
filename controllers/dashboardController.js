@@ -18,8 +18,8 @@ dashboard.get("/",  async (req,res)=>{
     try {
        
         const { allAreas } = await getAllareas();
-        res.send("Welcome to UN Back-End probando")
-        //res.status(200).json(allAreas);
+        
+        res.status(200).json(allAreas);
      } 
      catch (error) {
         res.status(500).json({ error: error.message });
