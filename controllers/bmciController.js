@@ -9,9 +9,9 @@ const bmci = express.Router();
 const GEMINI_API_KEY = process.env.APP_GEMINI_API_KEY;
 const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
 const embedModel = genAI.getGenerativeModel({ model: "embedding-001" });
-// const textModel = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
-const textModel = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-
+//const textModel = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
+ //const textModel = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+const textModel = genAI.getGenerativeModel({ model: "gemini-2.0-flash-lite" });
 
 
 
